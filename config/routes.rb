@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'comments/index'
+  get 'comments/show'
+  get 'comments/edit'
+  get 'comments/new'
   get 'likes/index'
   get 'likes/show'
   get 'likes/new'
