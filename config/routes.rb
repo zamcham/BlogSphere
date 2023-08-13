@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'likes/index'
+  get 'likes/show'
+  get 'likes/new'
   get 'users/index'
   get 'users/show'
   get 'users/new'
