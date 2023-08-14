@@ -13,19 +13,19 @@
  *= require_tree .
  *= require_self
  */
- @import 'bootstrap';
+@import 'bootstrap';
 
- $gray-color: #e1e5f2;
- $dark-blue: #022b3a;
- $medium-blue: #1f7a8c;
- $baby-blue: #bfdbf7;
+$gray-color: #e1e5f2;
+$dark-blue: #022b3a;
+$medium-blue: #1f7a8c;
+$baby-blue: #bfdbf7;
 
- .userImg {
-    width: 100px;
-    height: 100px;
- }
+.userImg {
+width: 100px;
+height: 100px;
+}
 
- .homeContentBox {
+.homeContentBox {
     background-color: $gray-color;
     width: 50%;
     border-radius: 14px;
@@ -42,4 +42,14 @@
     h4 {
         color: $dark-blue;
     }
+ }
+
+ .comment-list {
+    background-color: $gray-color;
+    margin-left: 2vw;
+
+    * {
+        padding: 5px;
+    }
+    
  }

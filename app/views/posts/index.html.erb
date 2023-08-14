@@ -1,17 +1,28 @@
 <!-- Displays all the user posts -->
 <h1>All user posts</h1>
 <div>
-    <% if @user.posts.any? %>
-        <ul>
-        <% @posts.each do |post| %>
-            <li>
-            
-            <strong><%= link_to post.title, user_post_path(@user, post.id) %></strong>
-            <%= post.content %>
-            </li>
+    <div>
+        <% if @user.posts.any? %>
+            <% @posts.each do |post| %>
+                <div>
+                    <strong><%= link_to post.title, user_post_path(@user, post.id) %></strong>
+                    <%= post.content %>
+                </div>
+                <% if post.comments.any? %>
+                    <% post.comments.each do |comment| %>
+                        <div>
+                            <strong><%= comment.user.name %></strong>
+                        </div>
+                        <div>
+                            <%= comment.content %>
+                        </div>
+                    <% end %>
+                <% else %>
+                    <p>No comments yet</p>
+                <% end %>
+            <% end %>
+        <% else %>
+            <p>No posts yet</p>
         <% end %>
-        </ul>
-    <% else %>
-        <p>No posts yet</p>
-    <% end %>
+    </div>
 </div>
