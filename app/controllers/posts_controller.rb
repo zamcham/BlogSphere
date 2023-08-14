@@ -9,9 +9,7 @@ class PostsController < ApplicationController
     @post = @user.posts.find(params[:id])
   end
 
-  def new
-  end
+  def new; end
 
-  def edit
-  end
+  def edit; end
 end
