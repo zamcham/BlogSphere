@@ -1,2 +1,29 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div>
+    <%= image_tag @user.photo, alt: 'user image' %>
+    <p><%= @user.name %></p>
+    <p>Number of posts: <%= @user.post_count %></p>
+</div>
+<div>
+    <% if @user.bio? %>
+        <p><%= @user.bio %></p>
+    <% else %>
+        <p>No bio yet</p>
+    <% end %>
+</div>
+<div>
+    <h2><%= link_to 'All Posts', user_posts_path(@user.id) %></h2>
+    <% if @user.posts.any? %>
+        <ul>
+        <% @user.posts.each do |post| %>
+            <li>
+            <strong><%= post.title %></strong>
+            <%= post.content %>
+            </li>
+        <% end %>
+        </ul>
+    <% else %>
+        <p>No posts yet</p>
+    <% end %>
+</div>
+
+
