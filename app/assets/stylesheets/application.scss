@@ -13,3 +13,33 @@
  *= require_tree .
  *= require_self
  */
+ @import 'bootstrap';
+
+ $gray-color: #e1e5f2;
+ $dark-blue: #022b3a;
+ $medium-blue: #1f7a8c;
+ $baby-blue: #bfdbf7;
+
+ .userImg {
+    width: 100px;
+    height: 100px;
+ }
+
+ .homeContentBox {
+    background-color: $gray-color;
+    width: 50%;
+    border-radius: 14px;
+    padding: 5px;
+
+    a {
+        color: $dark-blue;
+    }
+    
+    a:hover {
+        color: $medium-blue;
+    }
+
+    h4 {
+        color: $dark-blue;
+    }
+ }

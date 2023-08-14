@@ -1,10 +1,16 @@
-<h2>Users and posts count</h2>
-<ul>
-  <% @users.each do |user| %>
-    <li>
-      <%= image_tag user.photo, alt: 'user image' %>
-      <p><%= link_to user.name, user_path(user.id) %></p>
-      <p>Number of posts: <%= user.post_count %></p>
-    </li>
-  <% end %>
-</ul>
+<div class='container'> 
+  <h2>Users and posts count</h2>
+</div>
+<div class='container'> 
+  <ul>
+    <% @users.each do |user| %>
+      <li class='d-flex align-items-center'>
+        <%= image_tag user.photo, alt: 'user image', class: 'userImg' %>
+        <div class='homeContentBox'>
+          <h4><%= link_to user.name, user_path(user.id) %></h4>
+          <p>Number of posts: <%= user.post_count %></p>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
