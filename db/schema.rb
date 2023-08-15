@@ -45,7 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_040922) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name", default: "Cool User"
+    t.string "name", null: false
     t.string "photo", default: "default.jpg"
     t.text "bio"
     t.integer "post_count", default: 0

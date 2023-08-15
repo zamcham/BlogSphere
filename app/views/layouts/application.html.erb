@@ -26,8 +26,11 @@
             </li>
             <% if user_signed_in? %>
               <li class="nav-item">
-                <!-- log out -->
-                <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'btn btn-primary' %>
+                <!-- log out button -->
+                 <%= form_tag(destroy_user_session_path, method: :delete) do %>
+                    <%= button_tag 'Log Out', type: 'submit', class: 'btn btn-primary' %>
+                  <% end %>
+
               </li>
             <% else %>
               <li class="nav-item">
