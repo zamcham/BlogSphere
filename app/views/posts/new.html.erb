@@ -1,2 +1,17 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<h1>Create a New Post</h1>
+
+<%= form_for([@user, @post]) do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  
+  <div>
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+  
+  <%= form.submit 'Create Post' %>
+<% end %>
+
+<%= link_to 'Back to Posts', user_posts_path(@user) %>
