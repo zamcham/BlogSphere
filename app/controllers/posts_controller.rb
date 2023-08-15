@@ -6,7 +6,6 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
     @posts = @user.posts.includes(:comments, :likes) # Eager loading comments and likes
   end
-  
 
   def new
     @post = @user.posts.build
