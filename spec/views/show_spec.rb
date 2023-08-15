@@ -35,7 +35,7 @@ RSpec.feature 'User Profile and Posts' do
 
   scenario 'I can see the user\'s first 3 posts' do
     user = User.create(name: 'John Doe')
-    post = user.posts.create(user: user, title: 'My Post')
+    user.posts.create(user: user, title: 'My Post')
 
     visit user_path(user)
 

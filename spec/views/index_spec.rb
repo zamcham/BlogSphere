@@ -39,5 +39,4 @@ RSpec.feature 'Viewing users on home page' do
 
     expect(current_path).to eq(user_path(user))
   end
-
 end

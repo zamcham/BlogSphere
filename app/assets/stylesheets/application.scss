@@ -21,35 +21,34 @@ $medium-blue: #1f7a8c;
 $baby-blue: #bfdbf7;
 
 .userImg {
-width: 100px;
-height: 100px;
+  width: 100px;
+  height: 100px;
 }
 
 .homeContentBox {
-    background-color: $gray-color;
-    width: 50%;
-    border-radius: 14px;
+  background-color: $gray-color;
+  width: 50%;
+  border-radius: 14px;
+  padding: 5px;
+
+  a {
+    color: $dark-blue;
+  }
+
+  a:hover {
+    color: $medium-blue;
+  }
+
+  h4 {
+    color: $dark-blue;
+  }
+}
+
+.comment-list {
+  background-color: $gray-color;
+  margin-left: 2vw;
+
+  * {
     padding: 5px;
-
-    a {
-        color: $dark-blue;
-    }
-    
-    a:hover {
-        color: $medium-blue;
-    }
-
-    h4 {
-        color: $dark-blue;
-    }
- }
-
- .comment-list {
-    background-color: $gray-color;
-    margin-left: 2vw;
-
-    * {
-        padding: 5px;
-    }
-    
- }
+  }
+}
