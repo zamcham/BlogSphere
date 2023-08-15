@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.0'
-gem 'devise', '~> 4.9'
+gem 'devise', '~> 4.9', '>= 4.9.2'
 gem 'letter_opener'
 gem 'rspec-rails'
 gem 'rubocop', '>= 1.0', '< 2.0'
