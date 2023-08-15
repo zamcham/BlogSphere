@@ -15,7 +15,7 @@
 <div class='container'>
     <% if @user.posts.any? %>
         <% @user.posts.each do |post| %>
-            <li class='d-flex flex-column'>
+            <li class='d-flex flex-column user-post'>
                 <div> 
                     <strong><%= link_to post.title, user_post_path(@user, post.id) %></strong>
                 </div>

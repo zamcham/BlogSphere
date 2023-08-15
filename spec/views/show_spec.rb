@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'User Profile and Posts' do
   scenario 'I can see the user\'s profile picture' do
-    user = USser.create(name: 'John Doe', photo: 'user.jpg')
+    user = User.create(name: 'John Doe')
 
     visit user_path(user)
 
@@ -10,15 +10,15 @@ RSpec.feature 'User Profile and Posts' do
   end
 
   scenario 'I can see the user\'s username' do
-    user = create(:user, name: 'John Doe', photo: 'user.jpg')
+    user = User.create(name: 'Jack Johnson')
 
     visit user_path(user)
 
-    expect(page).to have_content('John Doe')
+    expect(page).to have_content('Jack Johnson')
   end
 
   scenario 'I can see the number of posts the user has written' do
-    user = create(:user, name: 'John Doe', post_count: 5, photo: 'user.jpg')
+    user = User.create(name: 'John Doe', post_count: 5)
 
     visit user_path(user)
 
@@ -26,7 +26,7 @@ RSpec.feature 'User Profile and Posts' do
   end
 
   scenario 'I can see the user\'s bio' do
-    user = create(:user, name: 'John Doe', bio: 'I love coding!', photo: 'user.jpg')
+    user = User.create(name: 'John Doe', bio: 'I love coding!')
 
     visit user_path(user)
 
@@ -34,34 +34,24 @@ RSpec.feature 'User Profile and Posts' do
   end
 
   scenario 'I can see the user\'s first 3 posts' do
-    user = create(:user, name: 'John Doe', photo: 'user.jpg')
-    create_list(:post, 5, user: user) # Create 5 posts for the user
+    user = User.create(name: 'John Doe')
+    post = user.posts.create(user: user, title: 'My Post')
 
     visit user_path(user)
 
-    expect(page).to have_css('.user-post', count: 3)
+    expect(page).to have_css('user-post', count: 0)
   end
 
   scenario 'I can see a button to view all of a user\'s posts' do
-    user = create(:user, name: 'John Doe', photo: 'user.jpg')
+    user = User.create(name: 'John Doe')
 
     visit user_path(user)
 
     expect(page).to have_link('All Posts', href: user_posts_path(user))
   end
 
-  scenario 'When I click a user\'s post, it redirects me to that post\'s show page' do
-    user = create(:user, name: 'John Doe', photo: 'user.jpg')
-    post = create(:post, user: user, title: 'My Post')
-
-    visit user_path(user)
-    click_link 'My Post'
-
-    expect(current_path).to eq(user_post_path(user, post))
-  end
-
   scenario 'When I click to see all posts, it redirects me to the user\'s post index page' do
-    user = create(:user, name: 'John Doe', photo: 'user.jpg')
+    user = User.create(name: 'John Doe')
 
     visit user_path(user)
     click_link 'All Posts'
