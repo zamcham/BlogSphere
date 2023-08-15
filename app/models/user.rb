@@ -11,6 +11,12 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 50 }
   validates :post_count, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
+  devise :database_authenticatable, :registerable,
+  :recoverable, :rememberable, :validatable, :confirmable
+
+  attr_accessor :name 
+  validates :name, presence: true
+
   def likes?(post)
     liked_posts.exists?(post.id)
   end
