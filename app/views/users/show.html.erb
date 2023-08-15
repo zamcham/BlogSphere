@@ -17,7 +17,7 @@
         <% @user.posts.each do |post| %>
             <li class='d-flex flex-column'>
                 <div> 
-                    <strong><%= post.title %></strong>
+                    <strong><%= link_to post.title, user_post_path(@user, post.id) %></strong>
                 </div>
                 <div> 
                     <%= post.content %>
@@ -32,7 +32,7 @@
                     </div>
                     <div class='px-1'>
                         <% if post.likes.any? %>
-                        <p>Likes: <%= post.liks.count %></p>
+                        <p>Likes: <%= post.likes.count %></p>
                         <% else %>
                             <p>Likes: 0</p>
                         <% end %>
