@@ -40,7 +40,7 @@ RSpec.describe Comment, type: :model do
     it 'Cheks increments post comment count' do
       user = User.create(name: 'John Doe')
       post = user.posts.create(title: 'Post 2', content: '2', comment_count: 0, like_count: 0)
-      comment1 = post.comments.create(user: user, post: post, content: 'Comment 1')
+      post.comments.create(user: user, post: post, content: 'Comment 1')
 
       expect(post.comment_count).to eq(1)
     end

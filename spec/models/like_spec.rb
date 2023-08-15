@@ -24,5 +24,13 @@ RSpec.describe Like, type: :model do
       expect(like).not_to be_valid
       expect(like.errors[:post_id]).to include("can't be blank")
     end
+
+    it 'Increments post like_count' do
+      user = User.create(name: 'John Doe')
+      post = user.posts.create(title: 'Post 2', content: '2', comment_count: 0, like_count: 0)
+      post.likes.create(user_id: user.id, post_id: post.id)
+
+      expect(post.like_count).to eq(1)
+    end
   end
 end
