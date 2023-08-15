@@ -1,7 +1,7 @@
 <h1><%= @post.title %></h1>
 <p><%= @post.content %></p>
-<p>By: <%= @user.name %></p>
-
+<p><%= @user.name %></p>
+<%= image_tag @user.photo, alt: 'user image', class: 'userImg' %>
 <div>
   <% if @current_user.likes?(@post) %>
     <%= button_to 'Unlike', user_post_like_path(@user, @post, @current_user.like_for(@post)), method: :delete, class: 'btn btn-secondary' %>

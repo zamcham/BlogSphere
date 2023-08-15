@@ -1,4 +1,7 @@
 <h1>All user posts</h1>
+<p><%= @user.name %></p>
+<p>Number of posts: <%= @user.posts.count %></p>
+<%= image_tag @user.photo, alt: 'user image', class: 'userImg' %>
 <div>
     <div>
         <% if @user.posts.any? %>
@@ -6,6 +9,21 @@
                 <div>
                     <strong><%= link_to post.title, user_post_path(@user, post.id) %></strong>
                     <%= post.content %>
+                </div>
+                <div class='px-1'>
+                        <% if post.comments.any? %>
+                        <p>Comments: <%= post.comments.count %></p>
+                        <% else %>
+                            <p>Comments: 0</p>
+                        <% end %>
+                    </div>
+                    <div class='px-1'>
+                        <% if post.likes.any? %>
+                        <p>Likes: <%= post.likes.count %></p>
+                        <% else %>
+                            <p>Likes: 0</p>
+                        <% end %>
+                    </div>
                 </div>
                 <% if post.comments.any? %>
                     <% post.comments.each do |comment| %>
@@ -23,6 +41,7 @@
         <% else %>
             <p>No posts yet</p>
         <% end %>
+        
     </div>
 </div>
 <div>
