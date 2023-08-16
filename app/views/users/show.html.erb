@@ -1,0 +1,66 @@
+<div class='d-flex align-items-center container'>
+    <%= image_tag @user.photo, alt: 'user image', class: 'userImg' %>
+    <div class='homeContentBox'>
+        <p><%= @user.name %></p>
+        <p>Number of posts: <%= @user.post_count %></p>
+    </div>
+</div>
+<div class='container'>
+    <% if @user.bio? %>
+        <p><%= @user.bio %></p>
+    <% else %>
+        <p>No bio yet</p>
+    <% end %>
+</div>
+<div class='container'>
+    <% if @user.posts.any? %>
+        <% @user.posts.each do |post| %>
+            <li class='d-flex flex-column user-post'>
+                <div> 
+                    <strong><%= link_to post.title, user_post_path(@user, post.id) %></strong>
+                </div>
+                <div> 
+                    <%= post.content %>
+                </div>
+                <div class='d-flex'>
+                    <div class='px-1'>
+                        <% if post.comments.any? %>
+                        <p>Comments: <%= post.comments.count %></p>
+                        <% else %>
+                            <p>Comments: 0</p>
+                        <% end %>
+                    </div>
+                    <div class='px-1'>
+                        <% if post.likes.any? %>
+                        <p>Likes: <%= post.likes.count %></p>
+                        <% else %>
+                            <p>Likes: 0</p>
+                        <% end %>
+                    </div>
+
+                </div>
+            </li>
+            <div class='d-flex comment-list'>
+                <% if post.comments.any? %>
+                    <% post.comments.each do |comment| %>
+                        <div>
+                            <strong><%= comment.user.name %></strong>
+                        </div>
+                        <div>
+                            <%= comment.content %>
+                        </div>
+                    <% end %>
+                <% else %>
+                    <p>No comments yet</p>
+                <% end %>
+            </div>
+        <% end %>
+    <% else %>
+        <p>No posts yet</p>
+    <% end %>
+</div>
+<div class='container pt-3'>
+  <h4><%= link_to 'All Posts', user_posts_path(@user.id), class: "btn btn-primary" %></h4>
+</div>
+
+
