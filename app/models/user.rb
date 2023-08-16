@@ -12,6 +12,9 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 50 }
   validates :post_count, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
+  def recent_posts
+    posts.order(created_at: :desc).limit(3)
+
   def likes?(post)
     liked_posts.exists?(post.id)
   end

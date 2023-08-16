@@ -36,5 +36,13 @@ RSpec.describe Comment, type: :model do
       expect(comment).not_to be_valid
       expect(comment.errors[:content]).to include('is too long (maximum is 1000 characters)')
     end
+
+    it 'Cheks increments post comment count' do
+      user = User.create(name: 'John Doe')
+      post = user.posts.create(title: 'Post 2', content: '2', comment_count: 0, like_count: 0)
+      post.comments.create(user: user, post: post, content: 'Comment 1')
+
+      expect(post.comment_count).to eq(1)
+    end
   end
 end
